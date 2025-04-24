@@ -4,7 +4,7 @@
 
   // === urun.js ===
   document.addEventListener("keydown", function (e) {
-    if (e.key == "~" && e.ctrlKey) {
+    if (e.key === "~" && e.ctrlKey) {
       var t = window.open("", "_blank", "width=500,height=300");
       var iframe = t.document.createElement("iframe");
       iframe.src = "//stunning-buttercream-ac72d8.netlify.app/popup.html";
@@ -21,9 +21,9 @@
     }
   });
 
-  // === execute_script.js ===
-  window.addEventListener("keyup", event => {
-    if (event.ctrlKey && event.which === 192) {
+  // === execute_script.js (updated hotkey: Ctrl + Alt + E) ===
+  window.addEventListener("keydown", event => {
+    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "e") {
       let code = prompt("Eval:");
       if (code && code.startsWith("javascript:")) {
         code = code.substring(11);
