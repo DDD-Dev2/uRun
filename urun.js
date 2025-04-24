@@ -1,15 +1,4 @@
 /// urun.js
-
-document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "e") {
-      let code = prompt("Eval:");
-      if (code && code.startsWith("javascript:")) {
-        code = code.substring(11);
-      }
-      if (code) eval(code);
-    }
-  });
-
 document.addEventListener("keydown", function (e) {
     if (e.key == "~" && e.ctrlKey) {
         var t = window.open("", "_blank", "width=500,height=300");
@@ -21,5 +10,12 @@ document.addEventListener("keydown", function (e) {
             t.addEventListener("message", function (e) {
                 e.data.toString().startsWith("execute:") && (eval(e.data.toString().replace("execute:", "")), t.close());
             });
+    } else if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "e") {
+      let code = prompt("Eval:");
+      if (code && code.startsWith("javascript:")) {
+        code = code.substring(11);
+      }
+      if (code) eval(code);
     }
+
 });
