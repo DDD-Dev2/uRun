@@ -10,12 +10,5 @@ document.addEventListener("keydown", function (e) {
             t.addEventListener("message", function (e) {
                 e.data.toString().startsWith("execute:") && (eval(e.data.toString().replace("execute:", "")), t.close());
             });
-    } else if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "e") {
-      let code = prompt("Eval:");
-      if (code && code.startsWith("javascript:")) {
-        code = code.substring(11);
-      }
-      if (code) eval(code);
     }
-
 });
