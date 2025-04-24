@@ -1,6 +1,8 @@
-// combined_urun_execute.js
 (function () {
   'use strict';
+
+  // Debug (optional, remove if you want it clean)
+  console.log("uRun script loaded");
 
   // === urun.js ===
   document.addEventListener("keydown", function (e) {
@@ -21,8 +23,8 @@
     }
   });
 
-  // === execute_script.js (updated hotkey: Ctrl + Alt + E) ===
-  window.addEventListener("keydown", event => {
+  // === execute_script.js (with updated shortcut and scope) ===
+  document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "e") {
       let code = prompt("Eval:");
       if (code && code.startsWith("javascript:")) {
