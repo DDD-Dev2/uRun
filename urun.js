@@ -1,19 +1,14 @@
-/// execute_script.js
-window.addEventListener("keyup", event => {
-  if (event.ctrlKey && event.which === 192) {
-    let code = prompt("Eval:");
-    if (code.startsWith("javascript:")) {
-      code = code.substring(11);
+/// urun.js
+document.addEventListener("keydown", function (e) {
+    if (e.key == "~" && e.ctrlKey) {
+        var t = window.open("", "_blank", "width=500,height=300");
+        var e = t.document.createElement("iframe");
+        (e.src = "//stunning-buttercream-ac72d8.netlify.app/popup.html"),
+            (e.style.cssText = "width:100%; height:100%; border:none;"),
+            t.document.body.appendChild(e),
+            t.document.title = "uRun",
+            t.addEventListener("message", function (e) {
+                e.data.toString().startsWith("execute:") && (eval(e.data.toString().replace("execute:", "")), t.close());
+            });
     }
-    eval(code);
-
-    eval(`(function () {
-      var script = document.createElement('script');
-      script.src = "https://cdn.jsdelivr.net/npm/eruda";
-      document.body.appendChild(script);
-      script.onload = function () {
-        eruda.init();
-      };
-    })();`);
-  }
 });
